@@ -8,7 +8,7 @@
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "dev": "DEBUG=sequelize-tuto:* nodemon app.js",
-    "start": "node app.js",
+    "start": "npm run migration:run && node app.js",
     "lint": "eslint ./",
     "lint:fix": "eslint . --fix",
     "migrations:generate": "sequelize-cli migration:generate --name ",
