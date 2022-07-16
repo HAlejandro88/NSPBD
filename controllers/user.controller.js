@@ -1,4 +1,4 @@
-const {models} = require('../config/db')
+const {models} = require('../config/sequelize')
 
 exports.showUsers = async (req,res) => {
     const users = await models.User.findAll()

@@ -1,4 +1,4 @@
-const taskModel = require('../models/task.model')
+const taskModel = require('../modelsA/task.model')
 
 
 exports.showAllTask = async (req,res,next) => {

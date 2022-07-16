@@ -1,8 +1,9 @@
 require('colors')
+require('dotenv').config()
 const express = require('express');
 const debug = require('debug')('sequelize-tuto:server');
 const cors = require('cors');
-const sequelize = require('./config/db')
+const sequelize = require('./config/sequelize')
 
 const app = express();
 
@@ -15,7 +16,8 @@ app.use('/tasks',require('./routes/task.routes'))
 
 app.listen(3000, (error) => {
       if (error) {
-        debug(error);
+        debug(error.message);
+        process.exit(1)
       }
       debug('Server is running 🚀');
       // Conectar a la base de datos

@@ -1,1 +1,1 @@
-const ss = require('./src/config/config')
+const ss = require('./db/config')

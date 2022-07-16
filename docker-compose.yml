@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  #Nombre que le doy a los servicios
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - DATABASE_HOST=127.0.0.1
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=roots
+      - POSTGRES_DB=fcc
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@mail.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    ports:
+      - 5050:80
+    depends_on:
+      - postgres
+
+  app:
+    container_name: test
+    restart: always
+    build: .
+    ports:
+      - "3000:3000"
+    links:
+      - postgres
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - postgres
+
+
+
