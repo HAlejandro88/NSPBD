@@ -1,0 +1,12 @@
+### Get All Users
+GET http://localhost:3000/users
+Content-Type: application/json
+
+### Create User
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "email": "carinaTorres@gmail.com",
+  "password": "349494"
+}

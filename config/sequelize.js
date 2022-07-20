@@ -1,26 +1,25 @@
-const { Sequelize } = require('sequelize')
-const {development} = require('../db/config')
+require('dotenv').config()
+const { Sequelize } = require('sequelize');
+const config = require('../db/config');
 
+const setupModel = require('../db/models/index');
 
-
-const setupModel = require('../db/models/index')
-
-const sequelize =  new Sequelize(
-    development.database,
-    development.username,
-    development.password,
-    {
-        host: development.host,
-        dialect: development.dialect,
-        define: {
-            // "createdAt": "createdat",
-            // "updatedAt": "updatedat",
-            timestamps: true
-        }
-    })
+const sequelize = new Sequelize(
+  config[process.env.NODE_ENV].database,
+    config[process.env.NODE_ENV].username,
+    config[process.env.NODE_ENV].password,
+  {
+    host: config[process.env.NODE_ENV].host,
+    dialect: config[process.env.NODE_ENV].dialect,
+    define: {
+      // "createdAt": "createdat",
+      // "updatedAt": "updatedat",
+      timestamps: true,
+    },
+  }
+);
 
 // Initialize models with conection
-setupModel(sequelize)
+setupModel(sequelize);
 
-
-module.exports = sequelize
+module.exports = sequelize;

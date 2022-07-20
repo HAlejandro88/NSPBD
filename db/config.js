@@ -1,23 +1,23 @@
 module.exports = {
-  "development": {
-    "username": "root",
-    "password": "roots",
-    "database": "fcc",
-    "host": "postgres",
-    "dialect": "postgres"
+  development: {
+    username: 'root',
+    password: 'roots',
+    database: 'fcc',
+    host: '127.0.0.1',
+    dialect: 'postgres',
   },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "post",
-    "dialect": "mysql"
+  test: {
+    username: 'root',
+    password: null,
+    database: 'database_test',
+    host: 'postgres', // esto es cuando creo mi propio contenedor o red
+    dialect: 'mysql',
   },
-  "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  }
-}
+  production: {
+    username: 'root',
+    password: null,
+    database: 'database_production',
+    host: '127.0.0.1',
+    dialect: 'mysql',
+  },
+};
