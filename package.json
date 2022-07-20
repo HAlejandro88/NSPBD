@@ -38,6 +38,10 @@
     "sequelize-cli": "^6.4.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "commitizen": "^4.2.5",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -56,5 +60,10 @@
     "url": "https://github.com/HAlejandro88/NSPBD/issues"
   },
   "homepage": "https://github.com/HAlejandro88/NSPBD#readme",
-  "description": ""
+  "description": "",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
