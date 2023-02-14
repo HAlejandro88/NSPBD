@@ -1,9 +1,13 @@
 require('colors');
-require('dotenv').config();
+require('dotenv').config({path: `./.env.${process.env.NODE_ENV}`});
 const express = require('express');
 const debug = require('debug')('sequelize-tuto:server');
+const ErrorMiddleware = require('./middlewares/Error')
 const cors = require('cors');
+
 // const sequelize = require('./config/sequelize');
+
+debug(process.env.POSTGRES_DB)
 
 const app = express();
 
@@ -17,7 +21,9 @@ app.use('/api/v1/permits', require('./routes/permits.route'));
 app.use('/api/v1/employees', require('./routes/employee.routes'));
 app.use('/api/v1/projects', require('./routes/project.routes'));
 
-app.listen(3000, (error) => {
+app.use(ErrorMiddleware)
+
+const server = app.listen(3000, (error) => {
   if (error) {
     debug(error.message);
     process.exit(1);
@@ -30,3 +36,9 @@ app.listen(3000, (error) => {
         console.log('Base de datos mysql conectada'.bold.cyan)
       }).catch((error) => debug('error en base de datos '+ error))*/
 });
+
+process.on('unhandledRejection', (err, promise) => {
+  debug(`Error: ${err.message}`);
+  // Close server & exit process
+  server.close(() => process.exit(1));
+})

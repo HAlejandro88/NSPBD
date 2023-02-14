@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config({ path: `../.env.${process.env.NODE_ENV}` })
 const { Sequelize } = require('sequelize');
 const config = require('../db/config');
 
@@ -19,7 +19,7 @@ const sequelize = new Sequelize(
   }
 );
 
-// Initialize models with conection
+// Initialize models with connection
 setupModel(sequelize);
 
 module.exports = sequelize;
